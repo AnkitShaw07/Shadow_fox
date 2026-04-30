@@ -1,101 +1,135 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ankit kumar shaw | Portfolio</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>My IPL Team — Fan Hub</title>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-
-  <!-- Navigation -->
-  <header>
-    <nav>
-      <h1 class="logo">Ankit kumar shaw</h1>
-      <ul class="nav-links">
-        <li><a href="#about">About</a></li>
-        <li><a href="#skills">Skills</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#resume">Resume</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </nav>
+  <header class="site-header">
+    <div class="container header-inner">
+      <img src="assets/logo.png" alt="Team Logo" class="logo" />
+      <button id="mobile-nav-toggle" aria-controls="main-nav" aria-expanded="false">☰</button>
+      <nav id="main-nav" class="main-nav" role="navigation" aria-label="Main navigation">
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#squad">Squad</a></li>
+          <li><a href="#fixtures">Fixtures</a></li>
+          <li><a href="#stats">Stats</a></li>
+          <li><a href="#news">News</a></li>
+          <li><a href="#fanzone">Fan Zone</a></li>
+        </ul>
+      </nav>
+    </div>
   </header>
 
-  <!-- About Section -->
-  <section id="about" class="section">
-    <div class="container">
-      <div>
-        <h2>About Me</h2>
-        <p>Hi! I'm <strong>Ankit kumar shaw</strong>, a passionate web developer with a focus on creating interactive and responsive websites. I love building modern, user-friendly web experiences.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Skills Section -->
-  <section id="skills" class="section bg-light">
-    <div class="container">
-      <h2>My Skills</h2>
-      <ul class="skills-list">
-        <li>HTML</li>
-        <li>CSS</li>
-        <li>JavaScript</li>
-        <li>Bootstrap</li>
-        <li>Python</li>
-        <li>React (Basics)</li>
-        <li>c language(DSA)</li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- Projects Section -->
-  <section id="projects" class="section">
-    <div class="container">
-      <h2>Portfolio Projects</h2>
-      <div class="project-grid">
-        <div class="project-card">
-          <h3>Static Website</h3>
-          <p>A simple static website built using HTML and CSS for a business landing page.</p>
-        </div>
-        <div class="project-card">
-          <h3>To-Do List App</h3>
-          <p>A basic JavaScript-based app to manage daily tasks efficiently.</p>
-        </div>
-        <div class="project-card">
-          <h3>Quiz Web App</h3>
-          <p>Interactive quiz app using HTML, CSS, and JavaScript for fun learning.</p>
+  <main>
+    <!-- HOME / HERO -->
+    <section id="home" class="hero">
+      <div class="container hero-inner">
+        <h1 id="team-name">Royal challenger bengluru</h1>
+        <p class="tagline">Official Fan Hub — fixtures, players, stats and live vibes</p>
+        <div class="hero-actions">
+          <a href="#fixtures" class="btn">View Fixtures</a>
+          <a href="#squad" class="btn secondary">Meet The Squad</a>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Resume Section -->
-  <section id="resume" class="section bg-light">
+    <!-- SQUAD -->
+    <section id="squad" class="section">
+      <div class="container">
+        <h2>Squad</h2>
+        <div class="controls">
+          <input id="player-search" type="search" placeholder="Search player or role (e.g. batsman)" aria-label="Search players">
+          <select id="role-filter" aria-label="Filter by role">
+            <option value="">All Roles</option>
+            <option value="Batsman">Batsman</option>
+            <option value="Bowler">Bowler</option>
+            <option value="Allrounder">Allrounder</option>
+            <option value="Wicketkeeper">Wicketkeeper</option>
+          </select>
+        </div>
+        <div id="players-grid" class="grid"></div>
+      </div>
+    </section>
+
+    <!-- FIXTURES -->
+    <section id="fixtures" class="section bg-light">
+      <div class="container">
+        <h2>Fixtures & Results</h2>
+        <div class="controls">
+          <input id="match-search" type="search" placeholder="Search by opponent or date (YYYY-MM-DD)" aria-label="Search matches">
+        </div>
+        <div id="fixtures-list" class="list"></div>
+      </div>
+    </section>
+
+    <!-- STATS -->
+    <section id="stats" class="section">
+      <div class="container">
+        <h2>Team Stats (Mock)</h2>
+        <div id="stats-cards" class="stats-grid"></div>
+        <button id="reset-stats" class="btn">Reset Example Stats</button>
+      </div>
+    </section>
+
+    <!-- NEWS -->
+    <section id="news" class="section bg-light">
+      <div class="container">
+        <h2>Latest News</h2>
+        <div id="news-list" class="news-grid"></div>
+        <p class="muted">Tip: Connect a news API for live updates (see README notes below).</p>
+      </div>
+    </section>
+
+    <!-- FAN ZONE -->
+    <section id="fanzone" class="section">
+      <div class="container">
+        <h2>Fan Zone</h2>
+
+        <!-- Poll -->
+        <div class="card">
+          <h3>Poll: Who will be Player of the Match next?</h3>
+          <form id="poll-form" aria-label="Fan poll">
+            <div id="poll-options"></div>
+            <button type="submit" class="btn">Vote</button>
+            <button type="button" id="view-poll-results" class="btn secondary">View Results</button>
+          </form>
+          <div id="poll-results" hidden></div>
+        </div>
+
+        <!-- Mini forum (client-side mock) -->
+        <div class="card">
+          <h3>Fan Forum</h3>
+          <form id="post-form" aria-label="Post to fan forum">
+            <input id="post-name" placeholder="Your name" required />
+            <textarea id="post-text" placeholder="Write your message..." rows="3" required></textarea>
+            <button class="btn">Post</button>
+          </form>
+          <ul id="posts" class="posts-list" aria-live="polite"></ul>
+        </div>
+
+        <!-- Social share (simple) -->
+        <div class="card">
+          <h3>Share the love</h3>
+          <div class="social">
+            <button class="btn" data-share="twitter">Share on Twitter</button>
+            <button class="btn" data-share="facebook">Share on Facebook</button>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
     <div class="container">
-      <h2>Resume</h2>
-      <p>Click below to download my resume:</p>
-      <a href="Ankit_Kumar.pdf" class="btn" download>Download Resume</a>
+      <p>© <span id="footer-year"></span> [Your Team Name] Fan Hub — Built with ❤️</p>
     </div>
-  </section>
-
-  <!-- Contact Section -->
-  <section id="contact" class="section">
-    <div class="container">
-      <h2>Contact Me</h2>
-      <form>
-        <input type="text" placeholder="Your Name" required>
-        <input type="email" placeholder="Your Email" required>
-        <textarea placeholder="Your Message" rows="5" required></textarea>
-        <button type="submit" class="btn">Send Message</button>
-      </form>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer>
-    <p>© 2025 Ankit kumar shaw | All Rights Reserved</p>
   </footer>
 
-  <script src="script.js"></script>
+  <script src="app.js"></script>
 </body>
 </html>
